@@ -1,12 +1,15 @@
 <script>
+  export let title = '';
   import { onMount, onDestroy } from 'svelte';
   import products from '../../stores/defaultProducts';
-  // let localProducts = $products;
-  // console.log(products);
-  // console.log($products);
+  import Product from './Product.svelte';
 </script>
 
-<h1>hello from products component</h1>
-{#each $products as product}
-  <h2>{product.title}</h2>
-{/each}
+<section class="section">
+  <h2 class="section-title">{title}</h2>
+  <div class="products-center">
+    {#each $products as product (product.id)}
+      <Product {product} />
+    {/each}
+  </div>
+</section>
